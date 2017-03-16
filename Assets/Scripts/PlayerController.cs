@@ -23,4 +23,15 @@ public class PlayerController : MonoBehaviour {
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 		rb2d.AddForce (movement * speed);
 	}
+
+	/*
+	 * Triggers are different from Colliders,
+	 * In that they don't actually create a physical collision / stop / bounce.
+	 */
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.gameObject.CompareTag ("PickUp")) {
+			// Yay, let's disable other
+			other.gameObject.SetActive (false);
+		}
+	}
 }
